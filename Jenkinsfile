@@ -19,7 +19,7 @@ pipeline{
         stage('Deploy Docker Image') {
             steps {
                 script {
-                def containerExists = sh(script: 'docker ps -a | grep docker-image1-service', returnStatus: true) == 0
+                def containerExists = sh(script: 'docker ps -a | grep docker-image1-service') == 0
                 if(containerExists){
                 sh 'sudo docker stop docker-image1-service'
                 sh 'sudo docker rm docker-image1-service'
